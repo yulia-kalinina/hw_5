@@ -12,11 +12,11 @@ export default class Cart {
   }
 
   calculateTotalAmount(): number {
-    let result: number = 0;
-    for (let i = 0; i < this.items.length; i++) {
-      result += this.items[i].price;
-    }
-    return result;
+    const cartTotal = this.items.reduce((totalAmount, item) => {
+      totalAmount += item.price;
+      return totalAmount;
+    }, 0);
+    return cartTotal;
   }
 
   calculateBonusedTotalAmount(discount: number): number {
